@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,22 +18,17 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        
-        //making our code async allows for scalability.
+        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
         {
             return await _context.Users.ToListAsync();
-
         }
 
-
-        //api/users/3
-         [Authorize]
-         [HttpGet("{id}")]
+        [Authorize]
+        [HttpGet("{id}")]
         public async Task<ActionResult<AppUser>> GetUser(int id)
         {
             return await _context.Users.FindAsync(id);
-
         }
     }
 }

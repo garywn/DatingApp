@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "a7db2ba3-7e40-4b0d-b124-f23edb246b53"
+    "analytics": false
   },
   "version": 1,
   "newProjectRoot": "projects",
@@ -26,9 +26,8 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "./node_modules/font-awesome/css/font-awesome.min.css",
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -67,21 +66,18 @@
           "defaultConfiguration": "production"
         },
         "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "sslCert": "./ssl/server.crt",
             "sslKey": "./ssl/server.key",
-            "ssl": true
+            "ssl": true,
+            "browserTarget": "client:build"
           },
-          "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
               "browserTarget": "client:build:production"
-            },
-            "development": {
-              "browserTarget": "client:build:development"
             }
-          },
-          "defaultConfiguration": "development"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
