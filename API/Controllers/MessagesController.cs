@@ -16,8 +16,9 @@ namespace API.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
-        public MessagesController(IMapper mapper, IUnitOfWork uwo)
+        public MessagesController(IMapper mapper, IUnitOfWork unitOfWork)
         {
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
